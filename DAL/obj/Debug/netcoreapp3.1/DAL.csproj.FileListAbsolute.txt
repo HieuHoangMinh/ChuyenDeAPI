@@ -1,0 +1,12 @@
+D:\CD4\DAL\bin\Debug\netcoreapp3.1\Model.dll
+D:\CD4\DAL\obj\Debug\netcoreapp3.1\DAL.csprojAssemblyReference.cache
+D:\CD4\DAL\obj\Debug\netcoreapp3.1\DAL.AssemblyInfoInputs.cache
+D:\CD4\DAL\obj\Debug\netcoreapp3.1\DAL.AssemblyInfo.cs
+D:\CD4\DAL\bin\Debug\netcoreapp3.1\DAL.deps.json
+D:\CD4\DAL\bin\Debug\netcoreapp3.1\DAL.dll
+D:\CD4\DAL\bin\Debug\netcoreapp3.1\DAL.pdb
+D:\CD4\DAL\bin\Debug\netcoreapp3.1\Model.pdb
+D:\CD4\DAL\obj\Debug\netcoreapp3.1\DAL.csproj.CoreCompileInputs.cache
+D:\CD4\DAL\obj\Debug\netcoreapp3.1\DAL.csproj.CopyComplete
+D:\CD4\DAL\obj\Debug\netcoreapp3.1\DAL.dll
+D:\CD4\DAL\obj\Debug\netcoreapp3.1\DAL.pdb

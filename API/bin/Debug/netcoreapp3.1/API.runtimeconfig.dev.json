@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "C:\\Users\\AsusTek\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\AsusTek\\.nuget\\packages"
+    ]
+  }
+}
