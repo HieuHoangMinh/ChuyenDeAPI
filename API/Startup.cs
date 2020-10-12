@@ -49,6 +49,10 @@ namespace API
             services.AddTransient<IMenuTypes, MenuTypes>();
             services.AddTransient<IOrderss, Orderss>();
             services.AddTransient<IOrders, Orders>();
+            services.AddTransient<IOrderDetailss, OrderDetailss>();
+            services.AddTransient<IOrderDetails, OrderDetails>();
+            services.AddTransient<IProductss, Productss>();
+            services.AddTransient<IProducts, Products>();
             services.AddTransient<IDatabaseHelper, DatabaseHelper>();
 
 

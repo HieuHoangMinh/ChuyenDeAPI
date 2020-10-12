@@ -6,12 +6,14 @@ namespace Model
 {
     public class Product
     {
-        public int ID{set;get;}
-      public string Name{set;get;}
-      public string Code{set;get;}
-      public string MetaTitle{set;get;}
-      public string Description{set;get;}
-      public string image{set;get;}
+        public int ID { set; get; }
+        public string Name { set; get; }
+        public string Code { set; get; }
+        public string MetaTitle { set; get; }
+        public string Description { set; get; }
+        public string image { set; get; }
+
+        public string MoreImages { set; get; }
       public decimal Price{set;get;}
       public decimal PromotionPrice{set;get;}
       public bool IncludedVAT{set;get;}
