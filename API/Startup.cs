@@ -31,10 +31,26 @@ namespace API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options => {
+                options.AddPolicy("AllowAll", builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+            });
             services.AddControllers();
             services.AddTransient < IBrands, Brands > ();
             services.AddTransient<IBrandss, Brandss>();
+            services.AddTransient<ICredentitalss, Credentitalss>();
+            services.AddTransient<ICredentitals, Credentitals>();
+            services.AddTransient<IFeedbackss, Feedbackss>();
+            services.AddTransient<IFeedbacks, Feedbacks>();
+            services.AddTransient<IFooterss, Footerss>();
+            services.AddTransient<IFooters, Footers>();
+            services.AddTransient<IMenuss, Menuss>();
+            services.AddTransient<IMenus, Menus>();
+            services.AddTransient<IMenuTypess, MenuTypess>();
+            services.AddTransient<IMenuTypes, MenuTypes>();
+            services.AddTransient<IOrderss, Orderss>();
+            services.AddTransient<IOrders, Orders>();
             services.AddTransient<IDatabaseHelper, DatabaseHelper>();
+
 
         }
 
@@ -45,17 +61,15 @@ namespace API
             {
                 app.UseDeveloperExceptionPage();
             }
-
-            app.UseHttpsRedirection();
-
+            app.UseApiMiddleware();
             app.UseRouting();
-
             app.UseAuthorization();
-
+            app.UseCors("AllowAll");
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
             });
+            app.UseHttpsRedirection();
         }
     }
 }

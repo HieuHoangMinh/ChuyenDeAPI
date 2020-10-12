@@ -7,6 +7,8 @@ namespace DAL.Interfaces
 {
     public interface IBrands
     {
-        public List<Brand> GetData();
+        bool Create(Brand model);
+        Brand GetDatabyID(string id);
+        public List<Brand> GetDataAll();
     }
 }

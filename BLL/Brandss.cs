@@ -9,15 +9,27 @@ namespace BLL
 {
     public  class Brandss : IBrandss
     {
-        private IBrands Brand;
-        public Brandss(IBrands Brand)
+        private IBrands _res;
+        public Brandss(IBrands ItemGroupRes)
         {
-            this.Brand = Brand;
+            _res = ItemGroupRes;
         }
-        public List<Brand> GetAll()
+        public bool Create(Brand model)
         {
-            return Brand.GetData();
+            return _res.Create(model);
+        }
+        public Brand GetDatabyID(string id)
+        {
+            return _res.GetDatabyID(id);
+        }
+        public List<Brand> GetDataAll()
+        {
+            return _res.GetDataAll();
         }
 
+        public List<Brand> GetAll()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

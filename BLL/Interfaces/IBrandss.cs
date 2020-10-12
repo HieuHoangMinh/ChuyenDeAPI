@@ -5,8 +5,10 @@ using System.Text;
 
 namespace BLL.Interfaces
 {
-    public interface IBrandss
+    public partial interface IBrandss
     {
-        public List<Brand> GetAll();
+        bool Create(Brand model);
+        Brand GetDatabyID(string id);
+        List<Brand> GetDataAll();
     }
 }

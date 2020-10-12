@@ -15,42 +15,31 @@ namespace API.Controllers
     [ApiController]
     public class BrandController : ControllerBase
     {
-        private IBrandss Brand;
-        public BrandController(IBrandss Brand)
+        private IBrandss _brand;
+        public BrandController(IBrandss itemBusiness)
         {
-            this.Brand = Brand;
-        }
-        // GET: api/<BrandController>
-        [Route("Brand")]
-        [HttpGet]
-        public IEnumerable<Brand> Get()
-        {
-            return Brand.GetAll();
+            _brand = itemBusiness;
         }
 
-        // GET api/<BrandController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
-
-        // POST api/<BrandController>
+        [Route("create-item")]
         [HttpPost]
-        public void Post([FromBody] string value)
+        public Brand CreateItem([FromBody] Brand model)
         {
+            _brand.Create(model);
+            return model;
         }
 
-        // PUT api/<BrandController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [Route("get-by-id/{id}")]
+        [HttpGet]
+        public Brand GetDatabyID(string id)
         {
+            return _brand.GetDatabyID(id);
         }
-
-        // DELETE api/<BrandController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [Route("get-all")]
+        [HttpGet]
+        public IEnumerable<Brand> GetDatabAll()
         {
+            return _brand.GetDataAll();
         }
     }
 }
