@@ -16,7 +16,7 @@ namespace Model
       public string Phone{set;get;}
       public DateTime CreatedDate{set;get;}
       public string CreatedBy{set;get;}
-      public string ModifiedDate{set;get;}
+      public DateTime ModifiedDate{set;get;}
       public string ModifiedBy{set;get;}
       public bool Status{set;get;}
     }

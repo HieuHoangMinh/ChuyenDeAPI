@@ -53,6 +53,16 @@ namespace API
             services.AddTransient<IOrderDetails, OrderDetails>();
             services.AddTransient<IProductss, Productss>();
             services.AddTransient<IProducts, Products>();
+            services.AddTransient<IProductCategoryss, ProductCategoryss>();
+            services.AddTransient<IProductCategorys, ProductCategorys>();
+            services.AddTransient<IRoless, Roless>();
+            services.AddTransient<IRoles, Roles>();
+            services.AddTransient<ITagss, Tagss>();
+            services.AddTransient<ITags, Tags>();
+            services.AddTransient<IUserss, Userss>();
+            services.AddTransient<IUsers, Users>();
+            services.AddTransient<IUserGroupss, UserGroupss>();
+            services.AddTransient<IUserGroups, UserGroups>();
             services.AddTransient<IDatabaseHelper, DatabaseHelper>();
 
 
