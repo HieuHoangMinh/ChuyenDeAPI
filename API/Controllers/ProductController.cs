@@ -30,7 +30,7 @@ namespace API.Controllers
 
         [Route("get-by-id/{id}")]
         [HttpGet]
-        public Product GetDatabyID(string id)
+        public Product GetDatabyID(int id)
         {
             return _order.GetDatabyID(id);
         }
@@ -40,5 +40,20 @@ namespace API.Controllers
         {
             return _order.GetDataAll();
         }
+        [Route("sp-by-loai/{page_index}/{page_size}/{category_id}")]
+        [HttpGet]
+        public IEnumerable<Product> GetByLoai(int page_index,
+                                      int page_size,
+                                       int category_id)
+            
+        {
+            long total = 0;
+           var kq= _order.GetByLoai(page_index,page_size,category_id,out total);
+            foreach (var item in kq) {
+                item.total = total;
+            }
+            return kq;
+        }
+
     }
 }

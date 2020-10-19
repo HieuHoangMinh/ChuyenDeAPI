@@ -30,5 +30,6 @@ namespace Model
       public bool Status{set;get;}
       public DateTime TopHot{set;get;}
       public int ViewCount{set;get;}
+        public long? total { set; get; }
     }
 }

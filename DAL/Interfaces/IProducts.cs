@@ -8,7 +8,10 @@ namespace DAL.Interfaces
     public interface IProducts
     {
         bool Create(Product model);
-        Product GetDatabyID(string id);
+        Product GetDatabyID(int id);
         public List<Product> GetDataAll();
+        List<Product> GetByLoai(int page_index,
+                                       int page_size,
+                                        int category_id,out long total);
     }
 }

@@ -73,7 +73,7 @@ namespace DAL
         }
 
         //laythuonghieu theo ID
-        public Product GetDatabyID(string id)
+        public Product GetDatabyID(int id)
         {
             string msgError = "";
             try
@@ -89,10 +89,33 @@ namespace DAL
                 throw ex;
             }
         }
+        public List<Product> GetByLoai( int page_index,
+                                       int page_size,
+                                        int category_id,out long total)
+        {
+            total = 0;
+            string msgError = "";
+            try
+            {
+                var dt = _dbHelper.ExecuteSProcedureReturnDataTable(out msgError, "sp_theo_loai",
+                     "@page_index",page_index,
+                                       "@page_size",page_size,
+                                       "@category_id",category_id);
+                if (!string.IsNullOrEmpty(msgError))
 
+                    throw new Exception(msgError);
+                if (dt.Rows.Count > 0) total = (long)dt.Rows[0]["RecordCount"];
+                return dt.ConvertTo<Product>().ToList();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
         public List<Product> GetData()
         {
             throw new NotImplementedException();
         }
+        
     }
 }
