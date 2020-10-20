@@ -12,10 +12,10 @@ namespace API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class OrderTypeController : ControllerBase
+    public class OrderController : ControllerBase
     {
         private IOrderss _order;
-        public OrderTypeController(IOrderss itemBusiness)
+        public OrderController(IOrderss itemBusiness)
         {
             _order = itemBusiness;
         }

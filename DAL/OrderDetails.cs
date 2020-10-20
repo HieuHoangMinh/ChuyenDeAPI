@@ -40,7 +40,10 @@ namespace DAL
                 "@ProductID", model.ProductID,
                 "@OrderID", model.OrderID,
                 "@Quantity", model.Quantity,
-                "@Price", model.Price);
+                "@Price", model.Price,
+                 "@Name", model.Name,
+                "@Image", model.Image
+                );
                 if ((result != null && !string.IsNullOrEmpty(result.ToString())) || !string.IsNullOrEmpty(msgError))
                 {
                     throw new Exception(Convert.ToString(result) + msgError);

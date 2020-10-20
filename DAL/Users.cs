@@ -37,7 +37,6 @@ namespace DAL
             try
             {
                 var result = _dbHelper.ExecuteScalarSProcedureWithTransaction(out msgError, "sp_user_create",
-                 "@ID",
                  "@UserName",model.UserName,
                  "@PassWord",model.PassWord,
                  "@GroupID",model.GroupID,
@@ -45,10 +44,6 @@ namespace DAL
                  "@Address",model.Address,
                  "@Email",model.Email,
                  "@Phone",model.Phone,
-                 "@CreatedDate",model.CreatedDate,
-                 "@CreatedBy",model.CreatedBy,
-                 "@ModifiedDate",model.ModifiedDate,
-                 "@ModifiedBy",model.ModifiedBy,
                  "@Status", model.Status);
                 if ((result != null && !string.IsNullOrEmpty(result.ToString())) || !string.IsNullOrEmpty(msgError))
                 {

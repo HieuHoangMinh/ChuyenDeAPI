@@ -37,14 +37,11 @@ namespace DAL
             try
             {
                 var result = _dbHelper.ExecuteScalarSProcedureWithTransaction(out msgError, "sp_order_create",
-                "@ID", model.ID,
-                "@CreateDate", model.CreateDate,
                 "@CustomerID", model.CustomerID,
                 "@ShipName", model.ShipName,
                 "@ShipMobile", model.ShipMobile,
                 "@ShipAddress", model.ShipAddress,
-                "@ShipEmail", model.ShipAddress,
-                "@Status", model.Status);
+                "@ShipEmail", model.ShipAddress);
                 if ((result != null && !string.IsNullOrEmpty(result.ToString())) || !string.IsNullOrEmpty(msgError))
                 {
                     throw new Exception(Convert.ToString(result) + msgError);

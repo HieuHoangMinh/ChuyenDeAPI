@@ -10,5 +10,8 @@ namespace Model
       public int OrderID{set;get;}
       public int Quantity{set;get;}
       public int Price{set;get;}
+        public string Name { set; get; }
+        public string Image { set; get; }
+
     }
 }

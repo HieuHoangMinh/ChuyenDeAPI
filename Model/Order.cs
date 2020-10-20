@@ -13,6 +13,6 @@ namespace Model
       public string ShipMobile{set;get;}
       public string ShipAddress{set;get;}
       public string ShipEmail{set;get;}
-      public bool Status{set;get;}
+      public int Status{set;get;}
     }
 }
