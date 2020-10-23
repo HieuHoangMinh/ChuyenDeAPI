@@ -6,7 +6,7 @@ namespace Model
 {
     public class Role
     {
-        public string ID{set;get;}
-      public string Name{set;get;}
+        public const string Admin = "Admin";
+        public const string User = "User";
     }
 }
