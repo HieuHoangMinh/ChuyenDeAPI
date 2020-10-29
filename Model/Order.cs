@@ -14,5 +14,6 @@ namespace Model
       public string ShipAddress{set;get;}
       public string ShipEmail{set;get;}
       public int Status{set;get;}
+        public OrderDetail listjson_chitiet { get; set; }
     }
 }

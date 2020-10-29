@@ -56,7 +56,7 @@ namespace BLL
         {
             return _res.GetDatabyID(id);
         }
-        public bool Create(UserModel model)
+        public UserModel Create(UserModel model)
         {
             return _res.Create(model);
         }

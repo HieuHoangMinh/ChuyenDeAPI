@@ -41,7 +41,8 @@ namespace DAL
                 "@ShipName", model.ShipName,
                 "@ShipMobile", model.ShipMobile,
                 "@ShipAddress", model.ShipAddress,
-                "@ShipEmail", model.ShipAddress);
+                "@ShipEmail", model.ShipAddress,
+                "@listjson_chitiet", model.listjson_chitiet != null ? MessageConvert.SerializeObject(model.listjson_chitiet) : null);
                 if ((result != null && !string.IsNullOrEmpty(result.ToString())) || !string.IsNullOrEmpty(msgError))
                 {
                     throw new Exception(Convert.ToString(result) + msgError);

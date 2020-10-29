@@ -13,5 +13,6 @@ namespace DAL.Interfaces
         List<Product> GetByLoai(int page_index,
                                        int page_size,
                                         int category_id,out long total);
+        List<Product> Search(int pageIndex, int pageSize, out long total, string Name, string CategoryID);
     }
 }

@@ -16,12 +16,12 @@ namespace DAL
             _dbHelper = dbHelper;
         }
 
-        public bool Create(UserModel model)
+        public UserModel Create(UserModel model)
         {
             string msgError = "";
             try
             {
-                var result = _dbHelper.ExecuteScalarSProcedureWithTransaction(out msgError, "sp_user_create",
+                var dt = _dbHelper.ExecuteSProcedureReturnDataTable(out msgError, "sp_user_create",
                 "@user_id", model.user_id,
                 "@hoten", model.hoten,
                 "@ngaysinh", model.ngaysinh,
@@ -32,11 +32,9 @@ namespace DAL
                 "@matkhau", model.matkhau,
                 "@role", model.role,
                 "@image_url", model.image_url);
-                if ((result != null && !string.IsNullOrEmpty(result.ToString())) || !string.IsNullOrEmpty(msgError))
-                {
-                    throw new Exception(Convert.ToString(result) + msgError);
-                }
-                return true;
+                if (!string.IsNullOrEmpty(msgError))
+                    throw new Exception(msgError);
+                return dt.ConvertTo<UserModel>().FirstOrDefault();
             }
             catch (Exception ex)
             {

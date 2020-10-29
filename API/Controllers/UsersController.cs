@@ -12,7 +12,7 @@ using Model;
 
 namespace API.Controllers
 {
-    [Authorize]
+    //[Authorize] 
     [ApiController]
     [Route("api/[controller]")]
     public class UsersController : ControllerBase
@@ -88,8 +88,8 @@ namespace API.Controllers
                 }
             }
             model.user_id = Guid.NewGuid().ToString();
-            _userBusiness.Create(model);
-            return model;
+            var kq=_userBusiness.Create(model);
+            return kq;
         }
 
         [Route("update-user")]
