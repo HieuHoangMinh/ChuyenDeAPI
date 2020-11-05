@@ -42,7 +42,7 @@ namespace DAL
                 "@ShipMobile", model.ShipMobile,
                 "@ShipAddress", model.ShipAddress,
                 "@ShipEmail", model.ShipEmail,
-                "@listjson_chitiet", model.listjson_chitiet != null ? MessageConvert.SerializeObject(model.listjson_chitiet) : null);
+                "@listjson_chitiet", model.listjson_chitiet != null ? model.listjson_chitiet.ToString() : null);
                 if ((result != null && !string.IsNullOrEmpty(result.ToString())) || !string.IsNullOrEmpty(msgError))
                 {
                     throw new Exception(Convert.ToString(result) + msgError);

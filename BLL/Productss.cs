@@ -36,7 +36,7 @@ namespace BLL
         {
             throw new NotImplementedException();
         }
-        public List<Product> Search(int pageIndex, int pageSize, out long total, string Name, string CategoryID)
+        public List<Product> Search(int pageIndex, int pageSize, out long total, string Name, int? CategoryID)
         {
             return _res.Search(pageIndex, pageSize, out total, Name, CategoryID);
         }

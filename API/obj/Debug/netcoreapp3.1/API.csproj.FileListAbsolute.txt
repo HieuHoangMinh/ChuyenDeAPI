@@ -53,5 +53,10 @@ D:\CD4\API\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Securi
 D:\CD4\API\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.JsonPatch.dll
 D:\CD4\API\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 D:\CD4\API\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
+D:\CD4\API\bin\Debug\netcoreapp3.1\Microsoft.OpenApi.dll
+D:\CD4\API\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Swagger.dll
+D:\CD4\API\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
+D:\CD4\API\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
 D:\CD4\API\obj\Debug\netcoreapp3.1\API.csproj.CoreCompileInputs.cache
+D:\CD4\API\obj\Debug\netcoreapp3.1\API.MvcApplicationPartsAssemblyInfo.cs
 D:\CD4\API\obj\Debug\netcoreapp3.1\API.MvcApplicationPartsAssemblyInfo.cache

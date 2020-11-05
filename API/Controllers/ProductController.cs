@@ -54,29 +54,21 @@ namespace API.Controllers
             }
             return kq;
         }
-
-        public ResponseModel Search([FromBody] Dictionary<string, object> formData)
+        [Route("search/{pageIndex}/{pageSize}/{name}/{categoryid}")]
+        [HttpGet]
+        public ResponseModel Search(int pageIndex, int pageSize,string name, int? categoryid)
         {
             var response = new ResponseModel();
-            try
-            {
-                var page = int.Parse(formData["page"].ToString());
-                var pageSize = int.Parse(formData["pageSize"].ToString());
-                string Name = "";
-                if (formData.Keys.Contains("Name") && !string.IsNullOrEmpty(Convert.ToString(formData["Name"]))) { Name = Convert.ToString(formData["Name"]); }
-                string CategoryID = "";
-                if (formData.Keys.Contains("CategoryID") && !string.IsNullOrEmpty(Convert.ToString(formData["CategoryID"]))) { CategoryID = Convert.ToString(formData["CategoryID"]); }
-                long total = 0;
-                var data = _order.Search(page, pageSize, out total, Name, CategoryID);
-                response.TotalItems = total;
-                response.Data = data;
-                response.Page = page;
-                response.PageSize = pageSize;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+         
+            long total = 0;
+           
+            if(categoryid==0)
+            response.Data = _order.Search(pageIndex, pageSize,out total, name, null);
+            else
+                response.Data = _order.Search(pageIndex, pageSize, out total, name, (categoryid.Value));
+            response.TotalItems = total;
+            response.Page = pageIndex;
+            response.PageSize = pageSize;
             return response;
         }
     }
