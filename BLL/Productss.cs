@@ -18,6 +18,10 @@ namespace BLL
         {
             return _res.Create(model);
         }
+        public bool Update(Product model)
+        {
+            return _res.Update(model);
+        }
         public Product GetDatabyID(int id)
         {
             return _res.GetDatabyID(id);
@@ -40,5 +44,11 @@ namespace BLL
         {
             return _res.Search(pageIndex, pageSize, out total, Name, CategoryID);
         }
+        public bool Delete(int ID)
+        {
+            return _res.Delete(ID);
+        }
+
+        
     }
 }

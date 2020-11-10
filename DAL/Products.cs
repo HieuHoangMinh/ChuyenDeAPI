@@ -67,6 +67,43 @@ namespace DAL
             }
         }
 
+        //update
+        public bool Update(Product model)
+        {
+            string msgError = "";
+            try
+            {
+                var result = _dbHelper.ExecuteScalarSProcedureWithTransaction(out msgError, "sp_product_update",
+                    "@ID",model.ID,
+                "@Name", model.Name,
+
+                "@MetaTitle", model.MetaTitle,
+                "@Description", model.Description,
+                "@image", model.image,
+
+                "@Price", model.Price,
+                "@PromotionPrice", model.PromotionPrice,
+
+                "@Quantity", model.Quantity,
+                "@CategoryID", model.CategoryID,
+                "@Detail", model.Detail,
+
+
+                "@MetaKeywords", model.MetaKeywords,
+                "@MetaDescriptions", model.MetaDescriptions
+               );
+                if ((result != null && !string.IsNullOrEmpty(result.ToString())) || !string.IsNullOrEmpty(msgError))
+                {
+                    throw new Exception(Convert.ToString(result) + msgError);
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         //laythuonghieu theo ID
         public Product GetDatabyID(int id)
         {
@@ -126,6 +163,24 @@ namespace DAL
                     throw new Exception(msgError);
                 if (dt.Rows.Count > 0) total = (long)dt.Rows[0]["RecordCount"];
                 return dt.ConvertTo<Product>().ToList();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public bool Delete(int ID)
+        {
+            string msgError = "";
+            try
+            {
+                var result = _dbHelper.ExecuteScalarSProcedureWithTransaction(out msgError, "sp_product_delete",
+                "@ID", ID);
+                if ((result != null && !string.IsNullOrEmpty(result.ToString())) || !string.IsNullOrEmpty(msgError))
+                {
+                    throw new Exception(Convert.ToString(result) + msgError);
+                }
+                return true;
             }
             catch (Exception ex)
             {

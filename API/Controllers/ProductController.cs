@@ -28,6 +28,15 @@ namespace API.Controllers
             return model;
         }
 
+        //update
+        [Route("update-item")]
+        [HttpPost]
+        public Model.Product UpdateItem([FromBody] Product model)
+        {
+            _order.Update(model);
+            return model;
+        }
+
         [Route("get-by-id/{id}")]
         [HttpGet]
         public Product GetDatabyID(int id)
@@ -70,6 +79,27 @@ namespace API.Controllers
             response.Page = pageIndex;
             response.PageSize = pageSize;
             return response;
+        }
+
+        [Route("delete-product")]
+        [HttpPost]
+        public IActionResult DeleteProduct([FromBody] Dictionary<string, object> formData)
+        {
+            string ID = "";
+            int id = 0;
+            if (formData.Keys.Contains("ID") && !string.IsNullOrEmpty(Convert.ToString(formData["ID"]))) { ID = Convert.ToString(formData["ID"]); id = int.Parse(ID);
+                _order.Delete(id);
+            }
+          
+            return Ok();
+        }
+        [Route("delete-product/{id}")]
+        [HttpGet]
+        public bool Delete(int id)
+        {
+
+
+            return _order.Delete(id);
         }
     }
 }
