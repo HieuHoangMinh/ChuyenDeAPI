@@ -37,29 +37,24 @@ namespace DAL
             try
             {
                 var result = _dbHelper.ExecuteScalarSProcedureWithTransaction(out msgError, "sp_product_create",
-                "@ID", model.ID,
+                
                 "@Name", model.Name,
-                "@Code", model.Code,
+               
                 "@MetaTitle", model.MetaTitle,
                 "@Description", model.Description,
                 "@image", model.image,
-                "@MoreImages", model.MoreImages,
+                
                 "@Price", model.Price,
                 "@PromotionPrice", model.PromotionPrice,
-                "@IncludedVAT", model.IncludedVAT,
+                
                 "@Quantity", model.Quantity,
                 "@CategoryID", model.CategoryID,
                 "@Detail", model.Detail,
-                "@Warranty", model.Warranty,
-                "@CreatedDate", model.CreatedDate,
-                "@CreatedBy", model.CreatedBy,
-                "@ModifiedDate", model.ModifiedDate,
-                "@ModifiedBy", model.ModifiedBy,
+               
+               
                 "@MetaKeywords", model.MetaKeywords,
-                "@MetaDescriptions", model.MetaDescriptions,
-                "@Status", model.Status,
-                "@TopHot", model.TopHot,
-                "@ViewCount", model.Status);
+                "@MetaDescriptions", model.MetaDescriptions
+               );
                 if ((result != null && !string.IsNullOrEmpty(result.ToString())) || !string.IsNullOrEmpty(msgError))
                 {
                     throw new Exception(Convert.ToString(result) + msgError);
