@@ -187,5 +187,26 @@ namespace DAL
                 throw ex;
             }
         }
+
+        //laysplienquan
+         public List<Product> GetProductRelated(int id, int category_id)
+        {
+            string msgError = "";
+            try
+            {
+                var dt = _dbHelper.ExecuteSProcedureReturnDataTable(out msgError, "sp_get_product_related",
+                    "@ID", id,
+                    "@CategoryID", category_id
+
+                     );
+                if (!string.IsNullOrEmpty(msgError))
+                    throw new Exception(msgError);
+                return dt.ConvertTo<Product>().ToList();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

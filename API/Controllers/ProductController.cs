@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using BLL.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Model;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -15,15 +17,55 @@ namespace API.Controllers
     public class ProductController : ControllerBase
     {
         private IProductss _order;
-        public ProductController(IProductss itemBusiness)
+        private string _path;
+        public ProductController(IProductss itemBusiness, IConfiguration configuration)
         {
             _order = itemBusiness;
+            _path = configuration["AppSettings:PATH"];
+        }
+
+        public string SaveFileFromBase64String(string RelativePathFileName, string dataFromBase64String)
+        {
+            if (dataFromBase64String.Contains("base64,"))
+            {
+                dataFromBase64String = dataFromBase64String.Substring(dataFromBase64String.IndexOf("base64,", 0) + 7);
+            }
+            return WriteFileToAuthAccessFolder(RelativePathFileName, dataFromBase64String);
+        }
+
+        public string WriteFileToAuthAccessFolder(string RelativePathFileName, string base64StringData)
+        {
+            try
+            {
+                string result = "";
+                string serverRootPathFolder = _path;
+                string fullPathFile = $@"{serverRootPathFolder}\{RelativePathFileName}";
+                string fullPathFolder = System.IO.Path.GetDirectoryName(fullPathFile);
+                if (!Directory.Exists(fullPathFolder))
+                    Directory.CreateDirectory(fullPathFolder);
+                System.IO.File.WriteAllBytes(fullPathFile, Convert.FromBase64String(base64StringData));
+                return result;
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
         }
 
         [Route("create-item")]
         [HttpPost]
         public Model.Product CreateItem([FromBody] Product model)
         {
+            if (model.image != null)
+            {
+                var arrData = model.image.Split(';');
+                if (arrData.Length == 3)
+                {
+                    var savePath = $@"{arrData[0]}";
+                    model.image = $"{savePath}";
+                    SaveFileFromBase64String(savePath, arrData[2]);
+                }
+            }
             _order.Create(model);
             return model;
         }
@@ -100,6 +142,12 @@ namespace API.Controllers
 
 
             return _order.Delete(id);
+        }
+        [Route("get-item-related/{id}/{category_id}")]
+        [HttpGet]
+        public IEnumerable<Product> GetProductRelated(int id, int category_id)
+        {
+            return _order.GetProductRelated(id, category_id);
         }
     }
 }

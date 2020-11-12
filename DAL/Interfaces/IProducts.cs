@@ -16,5 +16,6 @@ namespace DAL.Interfaces
         List<Product> Search(int pageIndex, int pageSize, out long total, string Name, int? CategoryID);
         bool Update(Product model);
         bool Delete(int ID);
+        List<Product> GetProductRelated(int id, int category_id);
     }
 }

@@ -48,7 +48,10 @@ namespace BLL
         {
             return _res.Delete(ID);
         }
+        public List<Product> GetProductRelated(int id, int category_id)
+        {
+            return _res.GetProductRelated(id, category_id);
+        }
 
-        
     }
 }
