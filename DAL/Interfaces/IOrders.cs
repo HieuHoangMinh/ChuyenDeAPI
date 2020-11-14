@@ -10,5 +10,6 @@ namespace DAL.Interfaces
         bool Create(Order model);
         Order GetDatabyID(string id);
         public List<Order> GetDataAll();
+        bool changeStatus(string id, string msg);
     }
 }

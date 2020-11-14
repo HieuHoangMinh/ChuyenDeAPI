@@ -10,5 +10,6 @@ namespace BLL.Interfaces
         bool Create(Order model);
         Order GetDatabyID(string id);
         List<Order> GetDataAll();
+        bool changeStatus(string id, string msg);
     }
 }

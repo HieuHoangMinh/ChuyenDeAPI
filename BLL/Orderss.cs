@@ -31,5 +31,10 @@ namespace BLL
         {
             throw new NotImplementedException();
         }
+        public bool changeStatus(string id, string msg)
+        {
+            return _res.changeStatus(id, msg);
+        }
+
     }
 }

@@ -40,5 +40,11 @@ namespace API.Controllers
         {
             return _order.GetDataAll();
         }
+        [Route("change-status/{id}/{msg}")]
+        [HttpGet]
+        public bool changeStatus(string id, string msg)
+        {
+            return _order.changeStatus(id, msg);
+        }
     }
 }

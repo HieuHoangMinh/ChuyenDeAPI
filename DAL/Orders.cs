@@ -77,5 +77,28 @@ namespace DAL
         {
             throw new NotImplementedException();
         }
+
+        public bool changeStatus(string id, string msg)
+        {
+            string msgError = "";
+            try
+            {
+                var result = _dbHelper.ExecuteScalarSProcedureWithTransaction(out msgError, "sp_bill_change_status",
+                "@ID", id,
+                "@Status", msg
+                );
+                if ((result != null && !string.IsNullOrEmpty(result.ToString())) || !string.IsNullOrEmpty(msgError))
+                {
+                    throw new Exception(Convert.ToString(result) + msgError);
+                }
+                return true;
+
+            }
+
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }
