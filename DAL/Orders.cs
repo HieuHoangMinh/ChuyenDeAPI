@@ -78,14 +78,14 @@ namespace DAL
             throw new NotImplementedException();
         }
 
-        public bool changeStatus(string id, string msg)
+        public bool changeStatus(int id, string msg)
         {
             string msgError = "";
             try
             {
                 var result = _dbHelper.ExecuteScalarSProcedureWithTransaction(out msgError, "sp_bill_change_status",
-                "@ID", id,
-                "@Status", msg
+                "@id", id,
+                "@status", msg
                 );
                 if ((result != null && !string.IsNullOrEmpty(result.ToString())) || !string.IsNullOrEmpty(msgError))
                 {
@@ -100,5 +100,41 @@ namespace DAL
                 throw ex;
             }
         }
+        public List<OrderDetail> GetBillByID(string id)
+        {
+            string msgError = "";
+            try
+            {
+                var dt = _dbHelper.ExecuteSProcedureReturnDataTable(out msgError, "sp_get_bill_detail", "@order_id", id);
+                if (!string.IsNullOrEmpty(msgError))
+                    throw new Exception(msgError);
+                return dt.ConvertTo<OrderDetail>().ToList();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public bool Delete(int id)
+        {
+            string msgError = "";
+            try
+            {
+                var result = _dbHelper.ExecuteScalarSProcedureWithTransaction(out msgError, "sp_bill_delete",
+                "@id", id);
+                if ((result != null && !string.IsNullOrEmpty(result.ToString())) || !string.IsNullOrEmpty(msgError))
+                {
+                    throw new Exception(Convert.ToString(result) + msgError);
+                }
+                return true;
+
+            }
+
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
     }
 }

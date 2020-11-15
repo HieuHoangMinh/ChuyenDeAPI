@@ -31,10 +31,23 @@ namespace BLL
         {
             throw new NotImplementedException();
         }
-        public bool changeStatus(string id, string msg)
+
+        //trang thai
+        public bool changeStatus(int id, string msg)
         {
             return _res.changeStatus(id, msg);
         }
 
+        //xem chi tiet
+        public List<OrderDetail> GetBillByID(string id)
+        {
+            return _res.GetBillByID(id);
+        }
+
+        //xoa don hang
+        public bool Delete(int id)
+        {
+            return _res.Delete(id);
+        }
     }
 }

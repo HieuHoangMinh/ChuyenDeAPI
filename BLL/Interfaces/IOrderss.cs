@@ -10,6 +10,15 @@ namespace BLL.Interfaces
         bool Create(Order model);
         Order GetDatabyID(string id);
         List<Order> GetDataAll();
-        bool changeStatus(string id, string msg);
+
+        //trangthai
+        bool changeStatus(int id, string msg);
+
+        //xem chi tiet
+        List<OrderDetail> GetBillByID(string id);
+
+        //xoa don hang
+        bool Delete(int id);
+
     }
 }

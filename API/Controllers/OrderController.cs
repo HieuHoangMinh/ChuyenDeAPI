@@ -34,17 +34,38 @@ namespace API.Controllers
         {
             return _order.GetDatabyID(id);
         }
+
+
         [Route("get-all")]
         [HttpGet]
         public IEnumerable<Order> GetDatabAll()
         {
             return _order.GetDataAll();
         }
+
+        //trang thai don hang
         [Route("change-status/{id}/{msg}")]
         [HttpGet]
-        public bool changeStatus(string id, string msg)
+        public bool changeStatus(int id, string msg)
         {
             return _order.changeStatus(id, msg);
+        }
+
+        //xem chi tiet don hang
+        [Route("get-bill-detail/{id}")]
+        [HttpGet]
+        public List<OrderDetail> GetBillDetail(string id)
+        {
+            return _order.GetBillByID(id);
+        }
+
+        //xoa don hang
+        [Route("delete-bill/{id}")]
+
+        [HttpGet]
+        public bool Delete(int id)
+        {
+            return _order.Delete(id);
         }
     }
 }
